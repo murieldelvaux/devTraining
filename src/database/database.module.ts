@@ -1,16 +1,17 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Course } from 'src/courses/entities/courses.entity';
 import { DataSourceOptions } from 'typeorm';
 
 export const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
   host: 'localhost',
-  port: 5432, // definido no docker-compose
+  port: 5432,
   username: 'postgres',
-  password: 'docker',
+  password: 'admin',
   database: 'devtraining',
-  entities: [],
-  synchronize: true, // pega as entidades e cria as tabelas, mas quem cria de fato será nossa migration
+  entities: [Course],
+  synchronize: true,
 };
 
 @Module({
